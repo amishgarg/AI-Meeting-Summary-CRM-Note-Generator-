@@ -1,0 +1,16 @@
+# Python
+/backend/venv/
+__pycache__/
+*.pyc
+
+# Node
+/frontend/node_modules/
+/frontend/dist/
+.npm
+npm-debug.log*
+
+# Secrets
+/backend/.env
+
+# VSCode
+.vscode/
