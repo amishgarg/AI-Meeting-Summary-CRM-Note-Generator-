@@ -13,14 +13,33 @@ This is a full-stack web application designed to help sales and operations teams
 -   **Dashboard Display**: Neatly displays all generated information on a clean user interface.
 -   **Email Functionality**: Allows the user to email the formatted summary to a predefined address.
 
----
-
 ## Tech Stack
 
 -   **Frontend**: React.js (Vite) with Tailwind CSS
 -   **Backend**: Python with FastAPI
 -   **AI**: Google Gemini
 -   **Email**: Python's built-in `smtplib`
+
+## AI Workflow
+
+The application processes a meeting transcript using a simple but powerful AI workflow to extract key insights.
+
+1.  **User Input**
+    The process begins when a user uploads a text file (`.txt`) containing the meeting transcript through the web interface.
+
+2.  **Backend Processing**
+    The Python FastAPI backend receives the uploaded file and reads its text content.
+
+3.  **Prompt Engineering**
+    The backend then constructs a detailed set of instructions (a "prompt") for the AI. This prompt instructs the Google Gemini model to act as an expert assistant and analyze the provided transcript, looking for specific types of information.
+
+4.  **Structured Output Generation**
+    The full transcript and the detailed prompt are sent to the Google Gemini API. A crucial part of the prompt is the instruction for the AI to return its findings *only* in a structured JSON format. This format requires three specific keys: `summary`, `objections`, and `action_items`.
+
+5.  **Frontend Display**
+    The backend receives this clean JSON data from the Gemini API. It's then sent to the React frontend, which parses the data and displays the summary, objections, and action items in their dedicated sections on the dashboard for the user to review.
+
+*(Note: The optional audio transcription feature was removed when the project was migrated from OpenAI's API to the Google AI API.)*
 
 ---
 
@@ -30,6 +49,7 @@ This is a full-stack web application designed to help sales and operations teams
 
 -   Python 3.8+
 -   Node.js and npm
+-   Git
 -   A Google AI API Key
 -   A Gmail account with 2-Step Verification enabled
 
